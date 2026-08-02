@@ -28,7 +28,7 @@ def ingest_file(file_path: str, session_id: str):
     """Ingest a single file into a Chroma collection scoped to session_id."""
     docs = load_document(file_path)
 
-    splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+    splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=150)
     chunks = splitter.split_documents(docs)
 
     vectorstore = Chroma.from_documents(

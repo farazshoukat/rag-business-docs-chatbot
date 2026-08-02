@@ -9,8 +9,8 @@ from config import GROQ_API_KEY
 from retriever import get_retriever
 
 SYSTEM_PROMPT = """You are a helpful assistant that answers questions using ONLY the context provided below.
+Give complete, detailed answers using everything relevant in the context — don't summarize down to one line if more detail is available.
 If the answer isn't in the context, say you don't have that information — never make something up.
-Keep answers short and clear.
 
 Context:
 {context}

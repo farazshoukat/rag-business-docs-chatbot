@@ -6,7 +6,7 @@ from config import CHROMA_PERSIST_DIR
 from ingest import get_embeddings
 
 
-def get_retriever(session_id: str, k: int = 3):
+def get_retriever(session_id: str, k: int = 6):
     vectorstore = Chroma(
         collection_name=f"session_{session_id}",
         persist_directory=CHROMA_PERSIST_DIR,
