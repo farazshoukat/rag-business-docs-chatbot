@@ -34,8 +34,8 @@ def format_docs(docs):
     return "\n\n".join(doc.page_content for doc in docs)
 
 
-def build_chain():
-    retriever = get_retriever()
+def build_chain(session_id: str):
+    retriever = get_retriever(session_id)
     chain = (
         {"context": retriever | format_docs, "question": RunnablePassthrough()}
         | prompt
@@ -43,11 +43,3 @@ def build_chain():
         | StrOutputParser()
     )
     return chain
-
-
-if __name__ == "__main__":
-    rag_chain = build_chain()
-    question = "What are your delivery hours?"
-    answer = rag_chain.invoke(question)
-    print("Q:", question)
-    print("A:", answer)
